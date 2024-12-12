@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Beasiswa</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: darkblue;
+            color: rgb(255, 255, 255);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo h1 {
+            margin: 0;
+        }
+
+        nav {
+            margin-right: 50px;
+        }
+
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            padding: 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            /* Smooth transition for hover effect */
+            border-radius: 5px
+        }
+
+        /* Navbar Hover Effect */
+        header nav a:hover {
+            background-color: rgb(3, 3, 255);
+            text-decoration: none;
+            color: #f4f7fc;
+        }
+
+        /* Beasiswa List Section */
+        .beasiswa-list-section {
+            margin-top: 100px;
+            padding: 20px;
+        }
+
+        .beasiswa-list-section h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Filter Options */
+        .filter-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .filter-section label {
+            margin-right: 10px;
+        }
+
+        .filter-section select {
+            padding: 10px;
+            font-size: 1rem;
+        }
+
+        /* Beasiswa Cards */
+        .beasiswa-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            width: 200px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            height: 20vh;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer .footer-content {
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .footer .footer-content div {
+            margin: 10px;
+        }
+
+        .footer h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .footer p,
+        .footer a {
+            font-size: 1rem;
+            margin: 5px 0;
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer p a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .footer .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .footer .social-icons a:hover {
+            color: #f4f7fc;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo" style="display: flex; align-items: center;">
+            <img src="img/unila-logo-trans.png" alt="Logo Unila" style="height: 65px; margin-right: 20px;">
+            <h1>Beasiswa Kampus Unila</h1>
+        </div>
+        <nav>
+            <a href="index.html">Beranda</a>
+            <a href="tentang.html">Tentang</a>
+        </nav>
+    </header>
+
+    <!-- Beasiswa List Section -->
+    <section class="beasiswa-list-section">
+        <h1>Daftar Semua Beasiswa</h1>
+
+        <!-- Filter Options -->
+        <div class="filter-section">
+            <label for="filter-kategori">Filter berdasarkan Kategori:</label>
+            <select id="filter-kategori" onchange="filterBeasiswa()">
+                <option value="">Semua Kategori</option>
+                <option value="S1">S1</option>
+                <option value="S2">S2</option>
+                <option value="S3">S3</option>
+                <option value="Diploma">Diploma</option>
+                <option value="Luar Negeri">Beasiswa Luar Negeri</option>
+            </select>
+        </div>
+
+        <!-- Beasiswa Cards -->
+        <div class="beasiswa-cards" id="beasiswa-cards">
+            <a href="detail_beasiswa.html?id=1">
+                <div class="card" data-kategori="S1">
+                    <img src="https://via.placeholder.com/200x150" alt="Beasiswa A">
+                    <h3>Beasiswa A</h3>
+                    <p>Beasiswa ini untuk mahasiswa S1 dan menawarkan bantuan hingga 100%.</p>
+                </div>
+            </a>
+            <a href="detail_beasiswa.html?id=2">
+                <div class="card" data-kategori="S2">
+                    <img src="https://via.placeholder.com/200x150" alt="Beasiswa B">
+                    <h3>Beasiswa B</h3>
+                    <p>Beasiswa ini untuk mahasiswa S2 yang berprestasi.</p>
+                </div>
+            </a>
+            <a href="detail_beasiswa.html?id=3">
+                <div class="card" data-kategori="S3">
+                    <img src="https://via.placeholder.com/200x150" alt="Beasiswa C">
+                    <h3>Beasiswa C</h3>
+                    <p>Beasiswa untuk mahasiswa S3 yang membutuhkan dukungan finansial.</p>
+                </div>
+            </a>
+            <a href="detail_beasiswa.html?id=4">
+                <div class="card" data-kategori="Diploma">
+                    <img src="https://via.placeholder.com/200x150" alt="Beasiswa D">
+                    <h3>Beasiswa D</h3>
+                    <p>Beasiswa untuk mahasiswa Diploma yang berprestasi.</p>
+                </div>
+            </a>
+            <a href="detail_beasiswa.html?id=5">
+                <div class="card" data-kategori="Luar Negeri">
+                    <img src="https://via.placeholder.com/200x150" alt="Beasiswa E">
+                    <h3>Beasiswa E</h3>
+                    <p>Beasiswa untuk mahasiswa yang ingin melanjutkan studi di luar negeri.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <h3>Kontak Kami</h3>
+                <p>Alamat: Jl. Sisingamangaraja, No. 1, Bandar Lampung, Indonesia</p>
+                <p>Email: <a href="mailto:beasiswa@unila.ac.id">beasiswa@unila.ac.id</a></p>
+                <p>Telp: +62 721 123 456</p>
+            </div>
+            <div>
+                <h3>Ikuti Kami</h3>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/unila/" target="_blank"><img src="img/ig.png" alt=""
+                            style="height: 30px"></a>
+                    <a href="https://www.facebook.com/unila" target="_blank"><img src="img/fb.png" alt=""
+                            style="height: 30px"></a>
+                    <a href="https://twitter.com/unilalampung" target="_blank"><img src="img/x.png" alt=""
+                            style="height: 30px"></a>
+                </div>
+            </div>
+        </div>
+        <p>&copy; 2024 Beasiswa Kampus Universitas Lampung. Dibangun dengan ❤️ untuk mahasiswa. <a href="#">Hubungi
+                Kami</a></p>
+    </footer>
+
+    <script>
+        function filterBeasiswa() {
+            const kategori = document.getElementById('filter-kategori').value;
+            const cards = document.querySelectorAll('.beasiswa-cards .card');
+
+            cards.forEach(card => {
+                if (!kategori || card.dataset.kategori === kategori) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

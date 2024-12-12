@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Beasiswa</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f7fc;
+        }
+
+        .detail-container {
+            margin: 80px auto;
+            padding: 40px;
+            max-width: 1000px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .detail-container h1 {
+            text-align: center;
+            color: #003366;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .detail-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .detail-container p {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Section Styling */
+        .section-title {
+            font-size: 1.5rem;
+            color: #003366;
+            margin-top: 20px;
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: #555;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+
+        .button {
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            background-color: #003366;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        .button:hover {
+            background-color: #00509e;
+        }
+
+        .footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            height: 20vh;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer .footer-content {
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .footer .footer-content div {
+            margin: 10px;
+        }
+
+        .footer h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .footer p, .footer a {
+            font-size: 1rem;
+            margin: 5px 0;
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer p a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .footer .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .footer .social-icons a:hover {
+            color: #f4f7fc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="detail-container" id="beasiswa-detail">
+        <h1>Detail Beasiswa</h1>
+        <img src="" alt="Beasiswa Image" id="beasiswa-image">
+        <h2 id="beasiswa-title"></h2>
+        <p id="beasiswa-description"></p>
+
+        <div class="section-title">Penyedia Beasiswa</div>
+        <p class="section-description" id="beasiswa-provider"></p>
+
+        <div class="section-title">Persyaratan</div>
+        <p class="section-description" id="beasiswa-requirements"></p>
+
+        <div class="section-title">Manfaat</div>
+        <p class="section-description" id="beasiswa-benefits"></p>
+
+        <div class="section-title">Cara Pendaftaran</div>
+        <p class="section-description" id="beasiswa-application"></p>
+
+        <!-- Button Daftar Beasiswa -->
+        <a href="#" id="beasiswa-register-link" class="button" target="_blank">Daftar Beasiswa</a>
+
+        <a href="list_beasiswa.html" class="button">Kembali ke Daftar Beasiswa</a>
+    </div>
+
+    <script>
+        // Mengambil parameter 'id' dari URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+
+        // Data beasiswa dengan link pendaftaran yang berbeda untuk setiap beasiswa
+        const beasiswaData = {
+            1: {
+                title: "Beasiswa A",
+                description: "Beasiswa ini untuk mahasiswa semester 1 dan menawarkan bantuan hingga 100%. Beasiswa ini bertujuan untuk membantu mahasiswa baru dalam menyelesaikan pendidikan tanpa terbebani biaya kuliah.",
+                provider: "Universitas Lampung dan Lembaga Pendidikan Mitra",
+                requirements: "IPK minimal 3.0, mengisi formulir pendaftaran, melampirkan transkrip nilai, dan dokumen pendukung lainnya.",
+                benefits: "Beasiswa ini mencakup biaya kuliah penuh, uang saku bulanan, serta kesempatan untuk mengikuti program magang di perusahaan mitra Universitas Lampung.",
+                application: "Pendaftaran dilakukan secara online melalui portal resmi Unila. Lengkapi formulir aplikasi dan unggah dokumen yang diperlukan.",
+                registerLink: "https://chatgpt.com/c/67594664-8b5c-8013-9641-3aa265f35744",  // Pastikan link pendaftaran yang benar
+                image: "https://via.placeholder.com/1200x600?text=Beasiswa+A"
+            },
+            2: {
+                title: "Beasiswa B",
+                description: "Beasiswa ini untuk mahasiswa semester 2 yang berprestasi di bidang akademik. Beasiswa ini mendukung mahasiswa untuk fokus dalam studi tanpa khawatir dengan biaya pendidikan.",
+                provider: "Universitas Lampung dan Pemerintah Daerah",
+                requirements: "Memiliki IPK 3.5 ke atas, aktif dalam kegiatan ekstrakurikuler, melampirkan surat rekomendasi dosen dan bukti prestasi akademik.",
+                benefits: "Biaya kuliah 50% ditanggung, dana untuk penelitian, dan akses ke pelatihan kepemimpinan serta pengembangan diri.",
+                application: "Proses pendaftaran dilakukan melalui email resmi dengan melampirkan dokumen persyaratan lengkap. Pastikan untuk mengikuti tes wawancara.",
+                registerLink: "https://www.unila.ac.id/pendaftaran-beasiswa-b",  // Pastikan link pendaftaran yang benar
+                image: "https://via.placeholder.com/1200x600?text=Beasiswa+B"
+            },
+            3: {
+                title: "Beasiswa C",
+                description: "Dukungan finansial untuk mahasiswa semester 3 kurang mampu. Beasiswa ini bertujuan untuk meringankan beban biaya pendidikan bagi mahasiswa yang membutuhkan.",
+                provider: "Pemerintah Provinsi Lampung",
+                requirements: "Surat keterangan tidak mampu, melampirkan fotokopi KTP, KK, dan dokumen pendukung lainnya.",
+                benefits: "Beasiswa ini mencakup biaya kuliah penuh, uang saku bulanan untuk kebutuhan hidup, serta bantuan lainnya untuk mahasiswa yang membutuhkan.",
+                application: "Pendaftaran dapat dilakukan melalui portal online Universitas Lampung. Unggah semua dokumen yang diperlukan dan isi formulir aplikasi dengan lengkap.",
+                registerLink: "https://www.unila.ac.id/pendaftaran-beasiswa-c",  // Pastikan link pendaftaran yang benar
+                image: "https://via.placeholder.com/1200x600?text=Beasiswa+C"
+            },
+            // Tambahkan beasiswa lainnya sesuai kebutuhan
+        };
+
+        // Menampilkan detail beasiswa berdasarkan id
+        if (id && beasiswaData[id]) {
+            const beasiswa = beasiswaData[id];
+            document.getElementById('beasiswa-title').innerText = beasiswa.title;
+            document.getElementById('beasiswa-description').innerText = beasiswa.description;
+            document.getElementById('beasiswa-provider').innerText = beasiswa.provider;
+            document.getElementById('beasiswa-requirements').innerText = beasiswa.requirements;
+            document.getElementById('beasiswa-benefits').innerText = beasiswa.benefits;
+            document.getElementById('beasiswa-application').innerText = beasiswa.application;
+            document.getElementById('beasiswa-image').src = beasiswa.image;
+            document.getElementById('beasiswa-register-link').href = beasiswa.registerLink; // Pastikan link pendaftaran diperbarui sesuai dengan ID beasiswa
+        } else {
+            document.getElementById('beasiswa-title').innerText = "Beasiswa Tidak Ditemukan";
+            document.getElementById('beasiswa-description').innerText = "Mohon maaf, beasiswa yang Anda cari tidak tersedia.";
+        }
+    </script>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <h3>Kontak Kami</h3>
+                <p>Alamat: Jl. Sisingamangaraja, No. 1, Bandar Lampung, Indonesia</p>
+                <p>Email: <a href="mailto:beasiswa@unila.ac.id">beasiswa@unila.ac.id</a></p>
+                <p>Telp: +62 721 123 456</p>
+            </div>
+            <div>
+                <h3>Ikuti Kami</h3>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/unila/" target="_blank"><img src="img/ig.png" alt="" style="height: 30px"></a>
+                    <a href="https://www.facebook.com/unila" target="_blank"><img src="img/fb.png" alt="" style="height: 30px"></a>
+                    <a href="https://twitter.com/unilalampung" target="_blank"><img src="img/x.png" alt="" style="height: 30px"></a>
+                </div>
+            </div>
+        </div>
+        <p>&copy; 2024 Beasiswa Kampus Universitas Lampung. Dibangun dengan ❤️ untuk mahasiswa. <a href="#">Hubungi Kami</a></p>
+    </footer>
+
+</body>
+</html>
